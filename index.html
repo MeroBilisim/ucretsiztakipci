@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstaTakipçi - Ücretsiz Takipçi Gönder</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/174/174855.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+    .merocun {
+      background: linear-gradient(45deg, #ff0066, #ffcc00, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    header {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 40px;
+    }
+    h1 {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    input, select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #3897f0;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .adsense-placeholder {
+      margin: 30px 0;
+      background: #e3e3e3;
+      height: 90px;
+      line-height: 90px;
+      color: #666;
+    }
+    #loading {
+      display: none;
+      margin-top: 20px;
+    }
+    #success {
+      display: none;
+      margin-top: 20px;
+      color: green;
+    }
+    .info {
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="merocun">merocun♡</div>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+    <h1>InstaTakipçi</h1>
+    <p>Ücretsiz Takipçi Gönderimi (Sınırlı Süreli)</p>
+  </header>
+
+  <div class="container">
+    <label>Takipçi Sayısı Seç</label>
+    <select id="count">
+      <option value="500">500</option>
+      <option value="1000">1000</option>
+      <option value="5000">5000</option>
+      <option value="10000">10000</option>
+    </select>
+
+    <label>Instagram Kullanıcı Adı</label>
+    <input type="text" id="username" placeholder="kullaniciadi">
+
+    <button onclick="startProcess()">Takipçi Gönder</button>
+
+    <div class="adsense-placeholder">
+      Google Reklam Alanı (728x90)
+    </div>
+
+    <div class="info">
+      <p>Takipçiler Türk, yabancı ve bot hesaplar olabilir.</p>
+      <p>Takipçilerin gelme süresi yoğunluğa göre değişebilir.</p>
+      <p>İşlem tamamen ücretsizdir ve bilgileriniz kaydedilmez.</p>
+    </div>
+
+    <div id="loading">
+      <p>İşleniyor, lütfen bekleyin... <span id="timer">180</span> saniye</p>
+    </div>
+
+    <div id="success">
+      <p>Takipçileriniz gönderiliyor!</p>
+      <p>Lütfen hesabınız herkese açık olsun.</p>
+    </div>
+  </div>
+
+  <script>
+    function startProcess() {
+      var username = document.getElementById("username").value;
+      if (!username) {
+        alert("Lütfen kullanıcı adınızı girin.");
+        return;
+      }
+      document.getElementById("loading").style.display = "block";
+      var count = 180;
+      var interval = setInterval(() => {
+        count--;
+        document.getElementById("timer").innerText = count;
+        if (count <= 0) {
+          clearInterval(interval);
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("success").style.display = "block";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
