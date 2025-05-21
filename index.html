@@ -2,100 +2,147 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ücretsiz Takipçi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InstaTakipçi - Ücretsiz Takipçi Gönder</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/174/174855.png">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
       text-align: center;
+    }
+    .merocun {
+      background: linear-gradient(45deg, #ff0066, #ffcc00, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    header {
+      background-color: #fff;
       padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 40px;
     }
     h1 {
-      font-size: 36px;
-      color: #ff1493;
-      animation: renkliYazi 2s infinite alternate;
+      margin-top: 10px;
+      font-size: 24px;
     }
-    @keyframes renkliYazi {
-      0% { color: #ff1493; }
-      50% { color: #8a2be2; }
-      100% { color: #1e90ff; }
-    }
-    .box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
+    .container {
       max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
     }
     input, select {
       padding: 10px;
-      margin-top: 10px;
-      width: 90%;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      border-radius: 8px;
     }
     button {
-      margin-top: 15px;
-      padding: 12px 24px;
-      background: purple;
-      color: white;
+      background-color: #3897f0;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
       border: none;
-      border-radius: 10px;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
-    #sayac {
-      font-size: 22px;
-      margin-top: 15px;
-      color: #8a2be2;
+    .adsense-placeholder {
+      margin: 30px 0;
+      background: #e3e3e3;
+      height: 90px;
+      line-height: 90px;
+      color: #666;
+    }
+    #loading {
+      display: none;
+      margin-top: 20px;
+    }
+    #success {
+      display: none;
+      margin-top: 20px;
+      color: green;
+    }
+    .info {
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Merocun♡</h1>
+  <div class="merocun">merocun♡</div>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+    <h1>InstaTakipçi</h1>
+    <p>Ücretsiz Takipçi Gönderimi (Sınırlı Süreli)</p>
+  </header>
 
-  <div class="box">
-    <h2>Ücretsiz Takipçi Gönder</h2>
-    <p>Max 10.000 takipçi gönderilebilir</p>
-    
-    <select>
-      <option>500 Takipçi</option>
-      <option>1000 Takipçi</option>
-      <option>5000 Takipçi</option>
-      <option>10000 Takipçi</option>
+  <div class="container">
+    <label>Takipçi Sayısı Seç</label>
+    <select id="count">
+      <option value="500">500</option>
+      <option value="1000">1000</option>
+      <option value="5000">5000</option>
+      <option value="10000">10000</option>
     </select>
-    <br>
-    <input type="text" id="kadi" placeholder="Instagram kullanıcı adın">
-    <br>
-    <button onclick="basla()">Gönder</button>
-    
-    <div id="sayac" style="display:none;"></div>
-  </div>
 
-  <div id="sonAdim" style="display:none; margin-top: 30px;">
-    <h2 style="color: purple;">Takipçilerin Yüklenmesi İçin Son Adım</h2>
-    <p>Butona tıkla ve 15 saniye bekle. Ardından takipçilerin gönderilecektir.<br>Hesabın herkese açık olmalıdır.</p>
-    <a href="https://tpi.li/4tPwMsS" target="_blank" style="padding: 12px 24px; background: #6a0dad; color: white; font-size: 18px; border-radius: 10px; text-decoration: none;">Takipçileri Aktif Et</a>
+    <label>Instagram Kullanıcı Adı</label>
+    <input type="text" id="username" placeholder="kullaniciadi">
+
+    <button onclick="startProcess()">Takipçi Gönder</button>
+
+    <div class="adsense-placeholder">
+      Google Reklam Alanı (728x90)
+    </div>
+
+    <div class="info">
+      <p>Takipçiler Türk, yabancı ve bot hesaplar olabilir.</p>
+      <p>Takipçilerin gelme süresi yoğunluğa göre değişebilir.</p>
+      <p>İşlem tamamen ücretsizdir ve bilgileriniz kaydedilmez.</p>
+    </div>
+
+    <div id="loading">
+      <p>İşleniyor, lütfen bekleyin... <span id="timer">180</span> saniye</p>
+    </div>
+
+    <div id="success">
+      <p>Takipçileriniz gönderiliyor!</p>
+      <p>Lütfen hesabınız herkese açık olsun.</p>
+    </div>
   </div>
 
   <script>
-    function basla() {
-      let kullanici = document.getElementById("kadi").value;
-      if (kullanici === "") {
-        alert("Lütfen kullanıcı adını gir.");
+    function startProcess() {
+      var username = document.getElementById("username").value;
+      if (!username) {
+        alert("Lütfen kullanıcı adınızı girin.");
         return;
       }
-
-      document.getElementById("sayac").style.display = "block";
-      let saniye = 180;
-      let sayac = setInterval(function() {
-        document.getElementById("sayac").innerText = "Takipçiler gönderiliyor: " + saniye + " saniye kaldı...";
-        saniye--;
-        if (saniye < 0) {
-          clearInterval(sayac);
-          document.getElementById("sayac").style.display = "none";
-          document.getElementById("sonAdim").style.display = "block";
+      document.getElementById("loading").style.display = "block";
+      var count = 180;
+      var interval = setInterval(() => {
+        count--;
+        document.getElementById("timer").innerText = count;
+        if (count <= 0) {
+          clearInterval(interval);
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("success").style.display = "block";
         }
       }, 1000);
     }
